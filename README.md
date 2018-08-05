@@ -16,6 +16,12 @@ docker build -t mysql https://github.com:/manoj23/dockerfile-mysql.git
 docker run --rm -ti -p 3306:3306 -v /path/to/db/:/var/lib/mysql/ mysql
 ```
 
+Run the following command to initialize the data directory:
+```
+mkdir /path/to/db
+docker run --rm -ti -v /path/to/db:/var/lib/mysql mysql mysql_install_db --user=mysql --ldata=/var/lib/mysql
+```
+
 ## Example of docker-compose.yml
 
 Put in a folder:
