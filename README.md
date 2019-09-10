@@ -6,7 +6,7 @@ This is a simple alpine container that runs a mysql instance.
 ## Example of docker build
 
 ```
-docker build -t mysql https://github.com:/manoj23/dockerfile-mysql.git
+docker build -t mysql --build-arg UID=$(id -u) --build-arg GID=$(id -g) https://github.com:/manoj23/dockerfile-mysql.git
 ```
 
 ## Example of docker run
