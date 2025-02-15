@@ -1,4 +1,5 @@
-FROM alpine:3.8 as builder
+ARG ALPINE_VERSION
+FROM alpine:${ALPINE_VERSION} as builder
 LABEL maintainer="Georges Savoundararadj <savoundg@gmail.com>"
 ARG UID=${UID:-1000}
 ARG GID=${GID:-1000}
