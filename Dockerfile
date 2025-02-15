@@ -6,7 +6,8 @@ LABEL alpine-version=${ALPINE_VERSION}
 LABEL dockerfile-hash=${DOCKERFILE_HASH:-}
 ARG UID=${UID:-1000}
 ARG GID=${GID:-1000}
-RUN apk update && apk add mariadb
+ARG MARIADB_VERSION
+RUN apk update && apk add --no-cache mariadb="${MARIADB_VERSION}"
 VOLUME [ "/var/lib/mysql" ]
 CMD [ "/usr/bin/mariadbd", \
     "--basedir=/usr", \
