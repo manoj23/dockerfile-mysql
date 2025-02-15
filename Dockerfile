@@ -6,6 +6,11 @@ LABEL alpine-version=${ALPINE_VERSION}
 LABEL dockerfile-hash=${DOCKERFILE_HASH:-}
 ARG UID=${UID:-1000}
 ARG GID=${GID:-1000}
-RUN apk update && apk add mysql mysql-client
+RUN apk update && apk add mariadb
 VOLUME [ "/var/lib/mysql" ]
-CMD [ "mysqld_safe" ]
+CMD [ "/usr/bin/mariadbd", \
+    "--basedir=/usr", \
+    "--datadir=/var/lib/mysql", \
+    "--plugin-dir=/usr/lib/mariadb/plugin", \
+    "--user=root", \
+    "--socket=/run/mysqld.sock" ]
